@@ -15,14 +15,14 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using FFXIV_TexTools2.ViewModel;
-using System.Windows; using Syncfusion.Windows.Shared;
+using System.Windows; 
 
 namespace FFXIV_TexTools2.Views
 {
     /// <summary>
     /// Interaction logic for ModelSearch.xaml
     /// </summary>
-    public partial class ModelSearch : ChromelessWindow
+    public partial class ModelSearch : Window
     {
         public ModelSearch(MainViewModel parent)
         {

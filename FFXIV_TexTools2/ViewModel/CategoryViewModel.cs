@@ -19,6 +19,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows;
 
 namespace FFXIV_TexTools2.ViewModel
 {
@@ -42,17 +43,20 @@ namespace FFXIV_TexTools2.ViewModel
             _parent = parent;
 
             _children = new ObservableCollection<CategoryViewModel>((from child in _nodeData.SubNode select new CategoryViewModel(child, this)).ToList<CategoryViewModel>());
+          
         }
 
         public ObservableCollection<CategoryViewModel> Children
         {
             get { return _children; }
             set { _children = value; OnPropertyChanged("Children"); }
+            
         }
 
         public string Name
         {
             get { return _nodeData.Name; }
+           
         }
 
         public ItemData ItemData

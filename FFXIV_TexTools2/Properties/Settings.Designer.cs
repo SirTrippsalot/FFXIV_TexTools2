@@ -86,9 +86,9 @@ namespace FFXIV_TexTools2.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
-        public global::System.Windows.Forms.FormWindowState TT_Win_State {
+        public global::System.Windows.WindowState TT_Win_State {
             get {
-                return ((global::System.Windows.Forms.FormWindowState)(this["TT_Win_State"]));
+                return ((global::System.Windows.WindowState)(this["TT_Win_State"]));
             }
             set {
                 this["TT_Win_State"] = value;
@@ -97,22 +97,22 @@ namespace FFXIV_TexTools2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
-        public global::System.Drawing.Size TT_Resolution {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TT_Width {
             get {
-                return ((global::System.Drawing.Size)(this["TT_Resolution"]));
+                return ((double)(this["TT_Width"]));
             }
             set {
-                this["TT_Resolution"] = value;
+                this["TT_Width"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string TT_SplitWidth {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public global::System.Windows.GridLength TT_SplitWidth {
             get {
-                return ((string)(this["TT_SplitWidth"]));
+                return ((global::System.Windows.GridLength)(this["TT_SplitWidth"]));
             }
             set {
                 this["TT_SplitWidth"] = value;
@@ -121,13 +121,49 @@ namespace FFXIV_TexTools2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
-        public global::System.Drawing.Point TT_Location {
+        [global::System.Configuration.DefaultSettingValueAttribute("70")]
+        public double TT_Left {
             get {
-                return ((global::System.Drawing.Point)(this["TT_Location"]));
+                return ((double)(this["TT_Left"]));
             }
             set {
-                this["TT_Location"] = value;
+                this["TT_Left"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double TT_Height {
+            get {
+                return ((double)(this["TT_Height"]));
+            }
+            set {
+                this["TT_Height"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TT_SplitCollapse {
+            get {
+                return ((bool)(this["TT_SplitCollapse"]));
+            }
+            set {
+                this["TT_SplitCollapse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("150")]
+        public double TT_Top {
+            get {
+                return ((double)(this["TT_Top"]));
+            }
+            set {
+                this["TT_Top"] = value;
             }
         }
     }

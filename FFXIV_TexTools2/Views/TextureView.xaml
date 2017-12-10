@@ -65,7 +65,7 @@
                     <xctk:Zoombox x:Name="zoomBox" DragModifiers="0" ZoomModifiers="0" KeepContentInBounds="True" MinScale="0.2" MaxScale="40" IsAnimated="False" ViewStackMode="Disabled" PanDistance="2">
                         <Image x:Name="texImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Effect="{Binding ImageEffect}" Source="{Binding ImageSource, NotifyOnSourceUpdated=True}" />
                     </xctk:Zoombox>
-                    <Grid Margin="0" Background="#3FFFFFFF" Height="33" VerticalAlignment="Top" HorizontalAlignment="Right" Width="151" IsEnabled="{Binding ChannelsEnabled, FallbackValue=false}">
+                    <Grid Margin="0" Background="#3F0FFFFF" Height="33" VerticalAlignment="Top" HorizontalAlignment="Right" Width="151" IsEnabled="{Binding ChannelsEnabled, FallbackValue=false}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -94,7 +94,7 @@
             <ComboBox x:Name="partComboBox" Grid.Column="2" Margin="5" IsSynchronizedWithCurrentItem="False" IsReadOnly="True" ItemsSource="{Binding PartComboBox}" DisplayMemberPath="Name" SelectedValuePath="Name" SelectedItem="{Binding SelectedPart}" SelectedIndex="{Binding PartIndex}" IsEnabled="{Binding PartEnabled, FallbackValue=false}" Background="#00000000" BorderBrush="{x:Null}"/>
             <ComboBox x:Name="typeComboBox" Grid.Column="3" Margin="5,5,6,5" IsSynchronizedWithCurrentItem="False" IsReadOnly="True" ItemsSource="{Binding TypeComboBox}" DisplayMemberPath="Name" SelectedValuePath="Name" SelectedItem="{Binding SelectedType}" SelectedIndex="{Binding TypeIndex}" IsEnabled="{Binding TypeEnabled, FallbackValue=false}" BorderBrush="{x:Null}" Background="#00000000"/>
         </Grid>
-        <TextBox x:Name="fullPathLabel" VerticalAlignment="Bottom" Margin="10,0,10,40" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" HorizontalContentAlignment="Center" IsReadOnly="True" Text="{Binding FullPathString, Mode=OneWay}" TextChanged="fullPathLabel_TextChanged" >
+        <TextBox x:Name="fullPathLabel" VerticalAlignment="Bottom" Margin="10,0,10,40" HorizontalContentAlignment="Center" IsReadOnly="True" Text="{Binding FullPathString, Mode=OneWay}" TextChanged="fullPathLabel_TextChanged" >
         </TextBox>
         <Grid x:Name="textureButtonGrid" Margin="10,0,10,0" Height="40" VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
@@ -102,7 +102,9 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            <Button x:Name="Save_All_DDS" Margin="5" Grid.Column="4" Content="Save All DDS" Click="Save_All_DDS_Click" IsEnabled="{Binding SaveEnabled, FallbackValue=false}" Background="#00000000"/>
             <Button Content="Export as Image" Margin="5" Command="{Binding SavePNGCommand}" IsEnabled="{Binding SaveEnabled, FallbackValue=false}" Background="#00000000"/>
             <Button Content="Export as DDS" Grid.Column="1" Margin="5" Command="{Binding SaveDDSCommand}" IsEnabled="{Binding SaveEnabled, FallbackValue=false}" Background="#00000000"/>
             <Button Content="Import" Grid.Column="2" Margin="5" Command="{Binding ImportCommand}" IsEnabled="{Binding ImportEnabled, FallbackValue=false}" Background="#00000000"/>

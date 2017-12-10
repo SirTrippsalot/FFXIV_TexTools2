@@ -71,6 +71,16 @@ namespace FFXIV_TexTools2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BG {
+            get {
+                object obj = ResourceManager.GetObject("BG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Achievement.tex
         ///ActionBar.tex
         ///ActionContents.tex
@@ -95,7 +105,8 @@ namespace FFXIV_TexTools2.Properties {
         ///BattleTalk_Timer.tex
         ///BeastTribeSupplyList.tex
         ///BeginnerChannelInviteImage.tex
-        ///BeginnersRoomMainWi [rest of string was truncated]&quot;;.
+        ///BeginnersRoomMainWindow.tex
+        ///BotanistGame.te [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string uldpaths {
             get {

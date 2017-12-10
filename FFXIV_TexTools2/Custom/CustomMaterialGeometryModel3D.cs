@@ -18,7 +18,7 @@ using HelixToolkit.Wpf.SharpDX.Utilities;
 using SharpDX;
 using SharpDX.Direct3D11;
 using System.ComponentModel;
-using System.Windows; using Syncfusion.Windows.Shared;
+using System.Windows; 
 
 namespace HelixToolkit.Wpf.SharpDX
 {

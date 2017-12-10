@@ -1,4 +1,4 @@
-﻿// FFXIV TexTools
+﻿    // FFXIV TexTools
 // Copyright © 2017 Rafael Gonzalez - All Rights Reserved
 // 
 // This program is free software: you can redistribute it and/or modify
@@ -15,9 +15,17 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System.Windows.Controls;
+using FFXIV_TexTools2;
+using FFXIV_TexTools2.Helpers;
+using FFXIV_TexTools2.Resources;
+using FFXIV_TexTools2.ViewModel;
+using FFXIV_TexTools2.Views;
+using System.Windows;
+using Xceed.Wpf;
 
 namespace FFXIV_TexTools2.Views
 {
+
     /// <summary>
     /// Interaction logic for TextureView.xaml
     /// </summary>
@@ -40,5 +48,13 @@ namespace FFXIV_TexTools2.Views
             e.Handled = true;
 
         }
+
+        
+            MainViewModel mViewModel;
+            private void Save_All_DDS_Click(object sender, RoutedEventArgs e)
+            {
+                mViewModel.TextureVM.SaveAllDDS();
+            }
+        
     }
 }

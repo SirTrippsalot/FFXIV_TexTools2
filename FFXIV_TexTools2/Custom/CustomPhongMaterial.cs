@@ -15,7 +15,7 @@ namespace HelixToolkit.Wpf.SharpDX
     using System;
     using System.ComponentModel;
     using System.IO;
-    using System.Windows; using Syncfusion.Windows.Shared;
+    using System.Windows; 
 
     /// <summary>
     /// Implments a phong-material with its all properties

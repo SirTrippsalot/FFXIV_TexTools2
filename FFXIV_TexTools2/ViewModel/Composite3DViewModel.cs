@@ -72,7 +72,7 @@ namespace FFXIV_TexTools2.ViewModel
 
             this.Camera = new PerspectiveCamera();
 
-            BackgroundColor = Color.Gray;
+            BackgroundColor = Color.Green;
             this.AmbientLightColor = new Color4(0.1f, 0.1f, 0.1f, 1.0f);
 
             this.Light1Direction = new Vector3(0, 0, -1f);

@@ -1,4 +1,4 @@
-﻿<syncfusion:ChromelessWindow     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="FFXIV_TexTools2.Views.ModList"
+﻿<Window     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="FFXIV_TexTools2.Views.ModList"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -44,7 +44,7 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="{Binding ActiveBorder}" BorderThickness="2" Background="{Binding Active}" Opacity="{Binding ActiveOpacity}">
+                        <Border>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="3*"/>
@@ -62,49 +62,49 @@
                                         <ColumnDefinition Width="1*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Border BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="1" Grid.Row="1">
+                                    <Border Grid.Row="1">
                                         <Viewbox StretchDirection="DownOnly">
                                             <Label Content="{Binding Race}"/>
                                         </Viewbox>
                                     </Border>
 
-                                    <Border BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="1" Grid.Row="3">
+                                    <Border  Grid.Row="3">
                                         <Viewbox StretchDirection="DownOnly">
                                             <Label Content="{Binding Map}"/>
                                         </Viewbox>
                                     </Border>
 
-                                    <Border BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="1" Grid.Row="1" Grid.Column="1">
+                                    <Border Grid.Row="1" Grid.Column="1">
                                         <Viewbox StretchDirection="DownOnly">
                                             <Label Content="{Binding Part}"/>
                                         </Viewbox>
                                     </Border>
 
-                                    <Border BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="1" Grid.Column="1" Grid.Row="3">
+                                    <Border  Grid.Column="1" Grid.Row="3">
                                         <Viewbox StretchDirection="DownOnly">
                                             <Label Content="{Binding Type}"/>
                                         </Viewbox>
                                     </Border>
 
-                                    <Border Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+                                    <Border>
                                         <Viewbox StretchDirection="DownOnly">
                                             <Label Content="Race"  VerticalContentAlignment="Top" Padding="0" HorizontalContentAlignment="Center"/>
                                         </Viewbox>
                                     </Border>
 
-                                    <Border Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Grid.Row="2">
+                                    <Border Grid.Row="2">
                                         <Viewbox StretchDirection="DownOnly">
                                             <Label Content="Map" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" Padding="0" />
                                         </Viewbox>
                                     </Border>
 
-                                    <Border Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Grid.Column="1">
+                                    <Border  Grid.Column="1">
                                         <Viewbox StretchDirection="DownOnly">
                                             <Label Content="Part" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" Padding="0"/>
                                         </Viewbox>
                                     </Border>
 
-                                    <Border Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Grid.Row="2" Grid.Column="1">
+                                    <Border  Grid.Row="2" Grid.Column="1">
                                         <Viewbox StretchDirection="DownOnly">
                                             <Label Content="Type" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" Padding="0"/>
                                         </Viewbox>
@@ -126,4 +126,4 @@
             </Grid>
         </Grid>
     </Grid>
-</syncfusion:ChromelessWindow>
+</Window>
