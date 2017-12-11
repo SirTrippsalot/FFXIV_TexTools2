@@ -30,9 +30,9 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Thumb">
-                        <Rectangle MinWidth="3" MinHeight="3" Margin="-3" StrokeThickness="0">
+                        <Rectangle MinWidth="10" MinHeight="10" Margin="0" StrokeThickness="2">
                             <Rectangle.Fill>
-                                <SolidColorBrush Color="#00000000" Opacity="0.00"/>
+                                <SolidColorBrush Color="#00000000" Opacity="100.00"/>
                             </Rectangle.Fill>
                         </Rectangle>
                     </ControlTemplate>
@@ -82,7 +82,7 @@
         </Style>
     </Window.Resources>
 
-    <Border BorderBrush="#00FFFFFF" BorderThickness="0" ClipToBounds="True">
+    <Border BorderBrush="#00FFFFFF" BorderThickness="0">
         <Grid>
         <Grid x:Name="Grid_Content" Background="#EFF7FA" >
             <Grid Margin="0"  Background="#FF282828">
@@ -125,15 +125,7 @@
                                                 <Setter Property="FontWeight" Value="Bold"/>
                                                 <Setter Property="Foreground" Value="#FFFFFFFF"/>
                                             </Trigger>
-                                            <Trigger Property="IsMouseOver" Value="true">
-                                                <Setter Property="Border.Background"  Value="#00000000"/>
-                                                <Setter Property="Focusable" Value="False"/>
-
-                                                <Setter Property="Background"  Value="#00000000"/>
-                                                <Setter Property="BorderBrush" Value="#00000000"/>
-                                                <Setter Property="Foreground" Value="#FF58A6C3"/>
-                                            </Trigger>
-
+                                    
                                         </Style.Triggers>
                                     </Style>
                                 </TreeView.ItemContainerStyle>
@@ -291,7 +283,7 @@
 
         </Grid>
 
-        <Grid Name="Resizers">
+        <Grid Name="Resizers" Margin="-6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
@@ -304,13 +296,14 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Thumb x:Name="ThumbBottom" DragDelta="ThumbBottom_DragDelta" HorizontalAlignment="Stretch" Cursor="SizeNS" Grid.Column="0" Background="{x:Null}"  Margin="3,0" Grid.ColumnSpan="3" Grid.Row="3" Style="{Binding Mode=OneWay, Source={StaticResource BorderThumb}}"/>
-            <Thumb x:Name="ThumbTop" DragDelta="ThumbTop_DragDelta" HorizontalAlignment="Stretch" Cursor="SizeNS" Grid.Column="0" Background="{x:Null}"  Margin="3,0" Grid.ColumnSpan="3" Height="4" Style="{Binding Mode=OneWay, Source={StaticResource BorderThumb}}"/>
-            <Thumb x:Name="ThumbBottomRightCorner" DragDelta="ThumbBottomRightCorner_DragDelta" HorizontalAlignment="Right" Cursor="SizeNWSE" Grid.Row="3" Grid.Column="3" Background="{x:Null}" Style="{Binding Mode=OneWay, Source={StaticResource BorderThumb}}"/>
+            <Thumb x:Name="ThumbTop" DragDelta="ThumbTop_DragDelta" HorizontalAlignment="Stretch" Cursor="SizeNS" Grid.Column="0" Background="{x:Null}"  Margin="3,0" Grid.ColumnSpan="3"  Style="{Binding Mode=OneWay, Source={StaticResource BorderThumb}}"/>
+                <Thumb x:Name="ThumbRight" DragDelta="ThumbRight_DragDelta" Cursor="SizeWE" Grid.Column="2" Grid.RowSpan="4" Background="{x:Null}"  Margin="0,3" Style="{Binding Mode=OneWay, Source={StaticResource BorderThumb}}"/>
+                <Thumb x:Name="ThumbLeft" DragDelta="ThumbLeft_DragDelta" Cursor="SizeWE" Grid.Column="0" Grid.RowSpan="4" HorizontalContentAlignment="Right" Background="{x:Null}" Margin="0,3" Style="{Binding Mode=OneWay, Source={StaticResource BorderThumb}}"/>
+                <Thumb x:Name="ThumbBottomRightCorner" DragDelta="ThumbBottomRightCorner_DragDelta" HorizontalAlignment="Right" Cursor="SizeNWSE" Grid.Row="3" Grid.Column="3" Background="{x:Null}" Style="{Binding Mode=OneWay, Source={StaticResource BorderThumb}}"/>
             <Thumb x:Name="ThumbTopRightCorner" DragDelta="ThumbTopRightCorner_DragDelta" HorizontalAlignment="Right" Cursor="SizeNESW" Grid.Row="0" Grid.Column="2" Background="{x:Null}" Style="{Binding Mode=OneWay, Source={StaticResource BorderThumb}}"/>
             <Thumb x:Name="ThumbTopLeftCorner" DragDelta="ThumbTopLeftCorner_DragDelta" HorizontalAlignment="Left" Cursor="SizeNWSE" Grid.Row="0" Grid.Column="0" Background="{x:Null}" Style="{Binding Mode=OneWay, Source={StaticResource BorderThumb}}" />
             <Thumb x:Name="ThumbBottomLeftCorner" DragDelta="ThumbBottomLeftCorner_DragDelta" HorizontalAlignment="Left" Cursor="SizeNESW" Grid.Row="3" Grid.Column="0" Background="{x:Null}" Style="{Binding Mode=OneWay, Source={StaticResource BorderThumb}}" />
-            <Thumb x:Name="ThumbRight" DragDelta="ThumbRight_DragDelta" Cursor="SizeWE" Grid.Column="2" Grid.RowSpan="4" Background="{x:Null}"  Margin="0,3" Style="{Binding Mode=OneWay, Source={StaticResource BorderThumb}}"/>
-            <Thumb x:Name="ThumbLeft" DragDelta="ThumbLeft_DragDelta" Cursor="SizeWE" Grid.Column="0" Grid.RowSpan="4" HorizontalContentAlignment="Right" Background="{x:Null}" Margin="0,3" Style="{Binding Mode=OneWay, Source={StaticResource BorderThumb}}"/>
+           
         </Grid>
         </Grid>
     </Border>

@@ -109,7 +109,8 @@ namespace FFXIV_TexTools2
         {
             if (this.Width + e.HorizontalChange > 10)
                 this.Width += e.HorizontalChange;
-            if (this.Top + e.VerticalChange > 10)
+
+            if (this.Top + e.VerticalChange > 10 && this.Height - e.VerticalChange >= this.MinHeight)
             {
                 this.Top += e.VerticalChange;
                 this.Height -= e.VerticalChange;
@@ -117,12 +118,12 @@ namespace FFXIV_TexTools2
         }
         void ThumbTopLeftCorner_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
-            if (this.Left + e.HorizontalChange > 10)
+            if (this.Left + e.HorizontalChange > 10 && this.Width - e.HorizontalChange >= this.MinWidth)
             {
                 this.Left += e.HorizontalChange;
                 this.Width -= e.HorizontalChange;
             }
-            if (this.Top + e.VerticalChange > 10)
+            if (this.Top + e.VerticalChange > 10 && this.Height - e.VerticalChange >= this.MinHeight)
             {
                 this.Top += e.VerticalChange;
                 this.Height -= e.VerticalChange;
@@ -130,7 +131,7 @@ namespace FFXIV_TexTools2
         }
         void ThumbBottomLeftCorner_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
-            if (this.Left + e.HorizontalChange > 10)
+            if (this.Left + e.HorizontalChange > 10 && this.Width - e.HorizontalChange >= this.MinWidth)
             {
                 this.Left += e.HorizontalChange;
                 this.Width -= e.HorizontalChange;
@@ -145,11 +146,11 @@ namespace FFXIV_TexTools2
         }
         void ThumbLeft_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
-            if (this.Left + e.HorizontalChange > 10)
+            if (this.Left + e.HorizontalChange > 10 && this.Width - e.HorizontalChange >= this.MinWidth)
             {
-                this.Left += e.HorizontalChange;
-                this.Width -= e.HorizontalChange;
-            }
+                    this.Left += e.HorizontalChange;
+                    this.Width -= e.HorizontalChange;
+                            }
         }
         void ThumbBottom_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
@@ -158,7 +159,7 @@ namespace FFXIV_TexTools2
         }
         void ThumbTop_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
-            if (this.Top + e.VerticalChange > 10)
+            if (this.Top + e.VerticalChange > 10 && this.Height - e.VerticalChange >= this.MinHeight)
             {
                 this.Top += e.VerticalChange;
                 this.Height -= e.VerticalChange;
