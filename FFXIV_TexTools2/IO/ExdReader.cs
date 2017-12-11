@@ -379,10 +379,11 @@ namespace FFXIV_TexTools2.IO
             var uldList = Properties.Resources.uldpaths.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
 
             var uldFolder = "ui/uld/";
+            
 
             TreeNode HUDNode = new TreeNode() { Name = "HUD" };
             Dictionary<string, TreeNode> HUDDict = new Dictionary<string, TreeNode>();
-
+            Debug.WriteLine(uldList);
             foreach (var uld in uldList)
             {
                 ItemData item = new ItemData();
@@ -413,15 +414,11 @@ namespace FFXIV_TexTools2.IO
                     item.ItemSubCategory = "Other";
                 }
 
-
+                
                 item.UIPath = uldFolder + uld.ToLower();
-                Debug.WriteLine(item.UIPath);
-                var invalidChars = Path.GetInvalidFileNameChars();
+                
 
-                string invalidCharsRemoved = new string(item.UIPath
-                  .Where(x => !invalidChars.Contains(x))
-                  .ToArray());
-                item.ItemName = Path.GetFileNameWithoutExtension(invalidCharsRemoved);
+                item.ItemName = item.UIPath;
                 TreeNode itemNode = new TreeNode() { Name = item.ItemName, ItemData = item };
 
 

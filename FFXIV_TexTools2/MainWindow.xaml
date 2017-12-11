@@ -182,7 +182,7 @@
                                 </StackPanel>
                             </TabItem.Header>
                          </TabItem>
-                        <TabItem Width="75" Margin="0" DataContext="{Binding ModelVM}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF58A6C3" Height="100" Padding="0">
+                        <TabItem Width="75" Margin="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF58A6C3" Height="100" Padding="0">
                             <TabItem.Header>
                                 <StackPanel Orientation="Horizontal" Background="#00000000">
                                     <Image  Height="75" Width="75" >
@@ -202,9 +202,9 @@
                                     </Image>
                                 </StackPanel>
                             </TabItem.Header>
-                            <views:ModelView/>
-                        </TabItem>
-                        <TabItem x:Name="ChatTab" Width="75" Margin="0,100,0,-100"  DataContext="{Binding ModelVM}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF58A6C3" Height="100" Padding="0">
+                                <views:SettingsView/>
+                            </TabItem>
+                        <TabItem x:Name="ChatTab" Width="75" Margin="0,100,0,-100"   Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF58A6C3" Height="100" Padding="0">
                             <TabItem.Header>
                                 <StackPanel Orientation="Horizontal" Background="#00000000">
                                     <Image  Height="75" Width="75" >
@@ -224,9 +224,9 @@
                                     </Image>
                                 </StackPanel>
                             </TabItem.Header>
-                            <views:ModelView/>
-                        </TabItem>
-                        <TabItem x:Name="SettingsTab" Width="75" Margin="0,100,0,-100" DataContext="{Binding ModelVM}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF58A6C3" Height="100" Padding="0" >
+                                <views:SettingsView/>
+                            </TabItem>
+                        <TabItem x:Name="SettingsTab" Width="75" Margin="0,100,0,-100"   Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF58A6C3" Height="100" Padding="0" >
                             <TabItem.Header>
                                 <StackPanel Orientation="Horizontal" Background="#00000000">
                                     <Image  Height="75" Width="75" >
