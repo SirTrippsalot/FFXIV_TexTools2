@@ -23,7 +23,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
-using System.Windows; 
+using System.Windows;
 
 namespace FFXIV_TexTools2.IO
 {
@@ -631,7 +631,7 @@ namespace FFXIV_TexTools2.IO
 
                         dataOverwritten = true;
                     }
-                    else
+                    else if(!inModList)
                     {
                         int emptyLength = 0;
                         int emptyLine = 0;

@@ -69,7 +69,7 @@ namespace FFXIV_TexTools2.IO
         {
             List<TreeNode> UINodes = new List<TreeNode>()
             {
-                MakeMapsList(), MakeActionsList(), itemIconNode, MakeStatusList(), MakeLoadingImageList(), MakeMapSymbolList(), MakeOnlineStatusList(), MakeWeatherList()
+                MakeMapsList(), MakeActionsList(), itemIconNode, MakeStatusList(), MakeHUDList(), MakeLoadingImageList(), MakeMapSymbolList(), MakeOnlineStatusList(), MakeWeatherList()
             };
 
             return UINodes;
@@ -415,7 +415,13 @@ namespace FFXIV_TexTools2.IO
 
 
                 item.UIPath = uldFolder + uld.ToLower();
-                item.ItemName = Path.GetFileNameWithoutExtension(item.UIPath);
+                Debug.WriteLine(item.UIPath);
+                var invalidChars = Path.GetInvalidFileNameChars();
+
+                string invalidCharsRemoved = new string(item.UIPath
+                  .Where(x => !invalidChars.Contains(x))
+                  .ToArray());
+                item.ItemName = Path.GetFileNameWithoutExtension(invalidCharsRemoved);
                 TreeNode itemNode = new TreeNode() { Name = item.ItemName, ItemData = item };
 
 

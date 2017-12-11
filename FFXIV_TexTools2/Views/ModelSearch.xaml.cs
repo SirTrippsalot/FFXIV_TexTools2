@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using FFXIV_TexTools2.ViewModel;
-using System.Windows; 
+using System.Windows;
 
 namespace FFXIV_TexTools2.Views
 {

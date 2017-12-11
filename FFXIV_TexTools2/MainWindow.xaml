@@ -125,8 +125,14 @@
                                                 <Setter Property="FontWeight" Value="Bold"/>
                                                 <Setter Property="Foreground" Value="#FFFFFFFF"/>
                                             </Trigger>
-                                    
-                                        </Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="true">
+                                                    <Setter Property="Border.Background"  Value="#00000000"/>
+                                                    <Setter Property="Background"  Value="#00000000"/>
+                                                    <Setter Property="BorderBrush" Value="#00000000"/>
+                                                    <Setter Property="Foreground" Value="#FF58A6C3"/>
+                                                </Trigger>
+
+                                            </Style.Triggers>
                                     </Style>
                                 </TreeView.ItemContainerStyle>
                             </TreeView>
@@ -175,8 +181,7 @@
                                     </Image>
                                 </StackPanel>
                             </TabItem.Header>
-                            <views:ModelView/>
-                        </TabItem>
+                         </TabItem>
                         <TabItem Width="75" Margin="0" DataContext="{Binding ModelVM}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF58A6C3" Height="100" Padding="0">
                             <TabItem.Header>
                                 <StackPanel Orientation="Horizontal" Background="#00000000">

@@ -20,7 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Windows; 
+using System.Windows;
 
 namespace FFXIV_TexTools2.ViewModel
 {
@@ -39,7 +39,10 @@ namespace FFXIV_TexTools2.ViewModel
                 {
                     JsonEntry entry = JsonConvert.DeserializeObject<JsonEntry>(line);
 
-                    categorySet.Add(entry.category);
+                    if (!entry.category.Equals(""))
+                    {
+                        categorySet.Add(entry.category);
+                    }
                 }
             }
             catch (Exception e)

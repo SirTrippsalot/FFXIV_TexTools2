@@ -23,7 +23,7 @@ using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Windows; 
+using System.Windows;
 
 namespace FFXIV_TexTools2.Helpers
 {

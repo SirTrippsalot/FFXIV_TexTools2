@@ -21,7 +21,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Windows; 
+using System.Windows;
 
 namespace FFXIV_TexTools2.ViewModel
 {

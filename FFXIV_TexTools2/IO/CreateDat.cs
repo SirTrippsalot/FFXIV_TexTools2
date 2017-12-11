@@ -18,7 +18,7 @@ using FFXIV_TexTools2.Helpers;
 using System;
 using System.IO;
 using System.Security.Cryptography;
-using System.Windows; 
+using System.Windows;
 
 namespace FFXIV_TexTools2
 {

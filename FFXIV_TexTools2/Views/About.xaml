@@ -1,4 +1,4 @@
-﻿<Window     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="FFXIV_TexTools2.Views.About"
+﻿<Window x:Class="FFXIV_TexTools2.Views.About"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -20,7 +20,7 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBox Grid.Row="0" TextWrapping="Wrap" AcceptsReturn="True" Text="FFXIV TexTools 2&#xD;&#xA;Version 1.4&#xD;&#xA;Created By Liinko" IsReadOnly="True" FontSize="20" BorderThickness="0"/>
+                <TextBox Grid.Row="0" TextWrapping="Wrap" AcceptsReturn="True" Text="FFXIV TexTools 2&#xD;&#xA;Version 1.5&#xD;&#xA;Created By Liinko" IsReadOnly="True" FontSize="20" BorderThickness="0"/>
                 <Button x:Name="DonateButton" Grid.Row="1" BorderBrush="{x:Null}" Click="DonateButton_Click" Foreground="{x:Null}" Background="{x:Null}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" >
                     <Button.Content>
                         <Image Source="/FFXIV TexTools 2;component/Resources/PaypalDonateButton.png" Stretch="Uniform"/>
