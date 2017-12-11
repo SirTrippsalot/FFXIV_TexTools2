@@ -35,6 +35,11 @@ namespace FFXIV_TexTools2.Views
     {
         public SettingsView()
         {
+            if (!Properties.Settings.Default.FFXIV_Directory.Contains("ffxiv"))
+            {
+                SetDirectories();
+            }
+
             InitializeComponent();
             DataContext = Properties.Settings.Default;
 
@@ -46,7 +51,70 @@ namespace FFXIV_TexTools2.Views
 
 
         }
+        /// <summary>
+        /// Asks for game directory and sets default save directory
+        /// </summary>
+        private void SetDirectories()
+        {
+            string[] commonInstallDirectories = new string[]
+            {
+                "C:/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/game/sqpack/ffxiv",
+                "C:/Program Files/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/game/sqpack/ffxiv",
+                "C:/Program Files/Steam/SteamApps/common/FINAL FANTASY XIV - A Realm Reborn/game/sqpack/ffxiv",
+                "C:/Program Files (x86)/Steam/SteamApps/common/FINAL FANTASY XIV - A Realm Reborn/game/sqpack/ffxiv"
+            };
 
+            if (Properties.Settings.Default.FFXIV_Directory.Equals(""))
+            {
+                Properties.Settings.Default.Save_Directory = Directory.GetCurrentDirectory() + "/Saved";
+
+                var installDirectory = "";
+                foreach (var i in commonInstallDirectories)
+                {
+                    if (Directory.Exists(i))
+                    {
+                        if (MessageBox.Show("FFXIV install directory found at \n\n" + i + "\n\nUse this directory? ", "Install Directory Found", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                        {
+                            installDirectory = i;
+                            Properties.Settings.Default.FFXIV_Directory = installDirectory;
+                            Properties.Settings.Default.Save();
+                        }
+
+                        break;
+                    }
+                }
+
+                if (installDirectory.Equals(""))
+                {
+                    if (MessageBox.Show("Please locate the following directory. \n\n .../FINAL FANTASY XIV - A Realm Reborn/game/sqpack/ffxiv", "Install Directory Not Found", MessageBoxButton.OK, MessageBoxImage.Question) == MessageBoxResult.OK)
+                    {
+                        while (!installDirectory.Contains("ffxiv"))
+                        {
+                            FolderSelectDialog folderSelect = new FolderSelectDialog()
+                            {
+                                Title = "Select sqpack/ffxiv Folder"
+                            };
+                            bool result = folderSelect.ShowDialog();
+                            if (result)
+                            {
+                                installDirectory = folderSelect.FileName;
+                            }
+                            else
+                            {
+                                Environment.Exit(0);
+                            }
+                        }
+
+                        Properties.Settings.Default.FFXIV_Directory = installDirectory;
+                        Properties.Settings.Default.Save();
+                    }
+                    else
+                    {
+                        Environment.Exit(0);
+                    }
+                }
+            }
+        }
         private void Menu_ProblemCheck_Click(object sender, RoutedEventArgs e)
         {
             if (Helper.CheckIndex())
