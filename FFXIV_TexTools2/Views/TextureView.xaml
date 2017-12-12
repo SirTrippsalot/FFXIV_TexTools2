@@ -7,8 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600">
     <UserControl.Resources>
-        <SolidColorBrush x:Key="DarkSquareColor" Color="#CC000000" />
-        <SolidColorBrush x:Key="LightSquareColor" Color="#BF000000" />
+        <SolidColorBrush x:Key="DarkSquareColor" Color="#ff777777" />
+        <SolidColorBrush x:Key="LightSquareColor" Color="#ffaaaaaa" />
         <Style x:Key="{x:Type xctk:Zoombox}" TargetType="{x:Type xctk:Zoombox}">
             <Style.Triggers>
                 <Trigger Property="AreDragModifiersActive" Value="True">
@@ -35,37 +35,42 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <GroupBox x:Name="groupBox" Header="" Margin="10,47,10,63" BorderBrush="{x:Null}">
             <Border>
-                <Border.Background>
-                    <DrawingBrush Viewport="0,0,20,20" ViewportUnits="Absolute" Stretch="None" TileMode="Tile">
-                        <DrawingBrush.Drawing>
-                            <DrawingGroup>
-                                <GeometryDrawing Brush="{DynamicResource DarkSquareColor}">
-                                    <GeometryDrawing.Geometry>
-                                        <GeometryGroup>
-                                            <RectangleGeometry Rect="0,0,10,10"/>
-                                            <RectangleGeometry Rect="10,10,10,10"/>
-                                        </GeometryGroup>
-                                    </GeometryDrawing.Geometry>
-                                </GeometryDrawing>
-                                <GeometryDrawing Brush="{DynamicResource LightSquareColor}">
-                                    <GeometryDrawing.Geometry>
-                                        <GeometryGroup>
-                                            <RectangleGeometry Rect="10,0,10,10"/>
-                                            <RectangleGeometry Rect="0,10,10,10"/>
-                                        </GeometryGroup>
-                                    </GeometryDrawing.Geometry>
-                                </GeometryDrawing>
-                            </DrawingGroup>
-                        </DrawingBrush.Drawing>
-                    </DrawingBrush>
-                </Border.Background>
+ 
                 <Grid>
                     <xctk:Zoombox x:Name="zoomBox" DragModifiers="0" ZoomModifiers="0" KeepContentInBounds="True" MinScale="0.2" MaxScale="40" IsAnimated="False" ViewStackMode="Disabled" PanDistance="2">
-                        <Image x:Name="texImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Effect="{Binding ImageEffect}" Source="{Binding ImageSource, NotifyOnSourceUpdated=True}" />
-                    </xctk:Zoombox>
-                    <Grid Margin="0" Background="#3F0FFFFF" Height="33" VerticalAlignment="Top" HorizontalAlignment="Right" Width="151" IsEnabled="{Binding ChannelsEnabled, FallbackValue=false}">
+                    <Grid Background="#ffffffff" VerticalAlignment="Bottom" HorizontalAlignment="Right"><Border Margin="0,0,0,0" BorderThickness="1" BorderBrush="Black">
+                            <Border.Background>
+                                <DrawingBrush Viewport="0,0,8.3,8.3" ViewportUnits="Absolute" Stretch="None" TileMode="Tile">
+                                    <DrawingBrush.Drawing>
+                                        <DrawingGroup>
+                                            <GeometryDrawing Brush="{DynamicResource DarkSquareColor}">
+                                                <GeometryDrawing.Geometry>
+                                                    <GeometryGroup>
+                                                        <RectangleGeometry Rect="0,0,4,4"/>
+                                                        <RectangleGeometry Rect="4,4,4,4"/>
+                                                    </GeometryGroup>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <GeometryDrawing Brush="{DynamicResource LightSquareColor}">
+                                                <GeometryDrawing.Geometry>
+                                                    <GeometryGroup>
+                                                        <RectangleGeometry Rect="4,0,4,4"/>
+                                                        <RectangleGeometry Rect="0,4,4,4"/>
+                                                    </GeometryGroup>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingGroup>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Border.Background>
+                            
+                            <Image x:Name="texImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Source="{Binding ImageSource, NotifyOnSourceUpdated=True}" Opacity="0.05" />
+                        </Border>
+                    </Grid>
+                </xctk:Zoombox>
+                <Grid x:Name="TextureTopBar" VerticalAlignment="Top" Margin="0">
+                    <Grid Margin="0" Height="33" VerticalAlignment="Center" HorizontalAlignment="Right" Width="151" IsEnabled="{Binding ChannelsEnabled, FallbackValue=false}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -77,12 +82,13 @@
                         <CheckBox x:Name="blueCheckBox" Content="B" Grid.Column="2" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsChecked="{Binding BlueChecked}"/>
                         <CheckBox x:Name="alphaCheckBox" Content="A" Grid.Column="3" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsChecked="{Binding AlphaChecked}"/>
                     </Grid>
-                    <Label x:Name="texTypeLabel" Content="{Binding TextureType}" Background="#66FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label x:Name="texDimensionLabel" Content="{Binding TextureDimensions}" Background="#66FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontWeight="Bold"/>
-                </Grid>
-            </Border>
-        </GroupBox>
-        <Grid Height="37" Margin="10,10,10,0" VerticalAlignment="Top">
+                    <Label x:Name="texTypeLabel" Content="{Binding TextureType}"  HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <Label x:Name="texDimensionLabel" Content="{Binding TextureDimensions}"  HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                    </Grid>
+            </Grid>
+  
+        </Border>
+        <Grid Height="37" Margin="10,10,10,70" VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

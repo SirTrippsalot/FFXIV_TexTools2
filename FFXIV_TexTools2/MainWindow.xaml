@@ -23,14 +23,13 @@
 
 
     <Window.Resources>
-
         <Style x:Key="BorderThumb" TargetType="Thumb">
             <Setter Property="SnapsToDevicePixels" Value="true" />
             <Setter Property="OverridesDefaultStyle" Value="true" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Thumb">
-                        <Rectangle MinWidth="10" MinHeight="10" Margin="0" StrokeThickness="2">
+                        <Rectangle MinWidth="10" MinHeight="10"  StrokeThickness="2">
                             <Rectangle.Fill>
                                 <SolidColorBrush Color="#00000000" Opacity="100.00"/>
                             </Rectangle.Fill>
@@ -80,20 +79,51 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <SolidColorBrush x:Key="GlyphBrush" Color="#FFA1A1A1" />
+        <Style x:Key="ExpandCollapseToggleStyle" TargetType="ToggleButton">
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Grid Width="15" Height="13" Background="Transparent">
+                            <Path x:Name="ExpandPath" HorizontalAlignment="Left"  VerticalAlignment="Center"  Margin="1,1,1,1" Fill="{StaticResource GlyphBrush}" Data="M 4 0 L 8 4 L 4 8 Z"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Data" TargetName="ExpandPath" Value="M 0 4 L 8 4 L 4 8 Z"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            
+        </Style>
+        <Style x:Key="TreeViewItemFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border>
+                            <Rectangle Margin="0,0,0,0" StrokeThickness="5" Stroke="#FF717171" StrokeDashArray="1 2" Opacity="0"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
 
     <Border BorderBrush="#00FFFFFF" BorderThickness="0">
         <Grid>
         <Grid x:Name="Grid_Content" Background="#EFF7FA" >
-            <Grid Margin="0"  Background="#FF282828">
+            <Grid   Background="#FF282828">
                 <Grid x:Name="SplitOverlay" Margin="0,32,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition MinWidth="400"/>
                         <ColumnDefinition Width="15"/>
                         <ColumnDefinition x:Name="RightColumn" MinWidth="180" Width="319.511"/>
                     </Grid.ColumnDefinitions>
-                    <Border x:Name="LeftBG"  Background="#FF717171" CornerRadius="15,0,0,15" Margin="80,0,-15,0"/>
-                    <Border x:Name="RightBG" Margin="0" Grid.Column="1" CornerRadius="15,0,0,15" Background="#FF505050" Grid.ColumnSpan="2"/>
+                    <Border x:Name="LeftBG" Panel.ZIndex="-1" Background="#FF717171" CornerRadius="15,0,0,15" Margin="80,0,-15,0"/>
+                    <Border  x:Name="RightBG" Panel.ZIndex="0"  Grid.Column="1" CornerRadius="15,0,0,15" Background="#FF505050" Grid.ColumnSpan="2"/>
                     <Grid IsHitTestVisible="False" Grid.ColumnSpan="3" Margin="0,-32,0,0" Opacity="0.20">
                         <Grid.Background>
                             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -101,12 +131,11 @@
                                 <GradientStop Color="Black"/>
                             </LinearGradientBrush>
                         </Grid.Background>
-                        <Image x:Name="BG" IsHitTestVisible="False" Source="Resources/BG.jpg" Stretch="UniformToFill" Grid.ColumnSpan="3" Margin="0" Opacity="0.1" Visibility="Hidden"/>
+                        <Image x:Name="BG" IsHitTestVisible="False" Source="Resources/BG.jpg" Stretch="UniformToFill" Grid.ColumnSpan="3"  Opacity="0.1" Visibility="Hidden"/>
                     </Grid>
-                    <GroupBox x:Name="TexturesGroup" Header="" Margin="0" Grid.Column="2" BorderBrush="{x:Null}">
+                    <GroupBox x:Name="TexturesGroup" Header=""  Grid.Column="2" BorderBrush="{x:Null}">
                         <Grid>
-                            <TreeView x:Name="textureTreeView" ItemsSource="{Binding Category}"  Margin="0" SelectedItemChanged="textureTreeView_SelectedItemChanged" Background="#00000000" BorderBrush="{x:Null}" Foreground="#00000000" IsTextSearchEnabled="True">
-                                <!-- TreeView.Style><Style TargetType="{x:Type TreeView}"><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="TreeView"><Border Name="Border" CornerRadius="1" BorderThickness="1"><Border.BorderBrush><SolidColorBrush Color="GhostWhite" /></Border.BorderBrush><Border.Background><SolidColorBrush Color="RosyBrown" /></Border.Background><ScrollViewer Focusable="False" CanContentScroll="False" Padding="4"><ItemsPresenter /></ScrollViewer></Border></ControlTemplate></Setter.Value></Setter></Style>   </-->
+                            <TreeView x:Name="textureTreeView" ItemsSource="{Binding Category}"   SelectedItemChanged="textureTreeView_SelectedItemChanged" Background="#00000000" BorderBrush="{x:Null}" Foreground="#00000000" IsTextSearchEnabled="True">
                                 <TreeView.Resources>
                                     <HierarchicalDataTemplate DataType="{x:Type local1:CategoryViewModel}" ItemsSource="{Binding Children}">
                                         <StackPanel Orientation="Horizontal">
@@ -116,30 +145,92 @@
                                 </TreeView.Resources>
                                 <TreeView.ItemContainerStyle>
                                     <Style TargetType="{x:Type TreeViewItem}">
-                                        <Setter Property="Foreground" Value="#FFA1A1A1"/>
-                                        <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
-                                        <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
-                                        <Setter Property="FontWeight" Value="Normal"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsFocused" Value="True">
-                                                <Setter Property="FontWeight" Value="Bold"/>
-                                                <Setter Property="Foreground" Value="#FFFFFFFF"/>
-                                            </Trigger>
-                                                <Trigger Property="IsMouseOver" Value="true">
-                                                    <Setter Property="Border.Background"  Value="#00000000"/>
-                                                    <Setter Property="Background"  Value="#00000000"/>
-                                                    <Setter Property="BorderBrush" Value="#00000000"/>
-                                                    <Setter Property="Foreground" Value="#FF58A6C3"/>
-                                                </Trigger>
+                                                                <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                                            <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                                            <Setter Property="Padding" Value="1,0,0,0"/>
+                                            <Setter Property="Foreground" Value="#FFA1A1A1"/>
+                                            <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
+                                            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                                            <Setter Property="FontWeight" Value="Normal"/>
+                                            <Setter Property="FocusVisualStyle" Value="{StaticResource TreeViewItemFocusVisual}"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition MinWidth="19" Width="Auto"/>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition/>
+                                                            </Grid.RowDefinitions>
+                                                            <ToggleButton x:Name="Expander" Style="{StaticResource ExpandCollapseToggleStyle}" IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press"/>
+                                                            <Border Name="Bd" Grid.Column="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                                                                <ContentPresenter x:Name="PART_Header" ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                                                            </Border>
+                                                            <ItemsPresenter x:Name="ItemsHost" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+                                                        </Grid>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsFocused" Value="True">
+                                                                <Setter Property="FontWeight" Value="Bold"/>
+                                                                <Setter Property="Foreground" Value="#FFFFFFFF"/>
+                                                            </Trigger>
 
-                                            </Style.Triggers>
-                                    </Style>
+                                                            <Trigger Property="IsMouseOver" Value="true">
+                                                                <Setter Property="Border.Background"  Value="#00000000"/>
+                                                                <Setter Property="Background"  Value="#00000000"/>
+                                                                <Setter Property="BorderBrush" Value="#00000000"/>
+                                                                <Setter Property="Foreground" Value="#FF58A6C3"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsExpanded" Value="false">
+                                                                <Setter TargetName="ItemsHost" Property="Visibility" Value="Collapsed"/>
+                                                            </Trigger>
+                                                            <Trigger Property="HasItems" Value="false">
+                                                                <Setter TargetName="Expander" Property="Visibility" Value="Hidden"/>
+                                                            </Trigger>
+                                                            <MultiTrigger>
+                                                                <MultiTrigger.Conditions>
+                                                                    <Condition Property="HasHeader" Value="false"/>
+                                                                    <Condition Property="Width" Value="Auto"/>
+                                                                </MultiTrigger.Conditions>
+                                                                <Setter TargetName="PART_Header" Property="MinWidth" Value="75"/>
+                                                            </MultiTrigger>
+                                                            <MultiTrigger>
+                                                                <MultiTrigger.Conditions>
+                                                                    <Condition Property="HasHeader" Value="false"/>
+                                                                    <Condition Property="Height" Value="Auto"/>
+                                                                </MultiTrigger.Conditions>
+                                                                <Setter TargetName="PART_Header" Property="MinHeight" Value="19"/>
+                                                            </MultiTrigger>
+                                                            <Trigger Property="IsSelected" Value="true">
+                                                                <Setter Property="FontWeight" Value="Bold"/>
+                                                                <Setter Property="Foreground" Value="#ffffffff"/>
+                                                            </Trigger>
+                                                            <MultiTrigger>
+                                                                <MultiTrigger.Conditions>
+                                                                    <Condition Property="IsSelected" Value="true"/>
+                                                                    <Condition Property="IsSelectionActive" Value="false"/>
+                                                                </MultiTrigger.Conditions>
+                                                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                                                            </MultiTrigger>
+                                                            <Trigger Property="IsEnabled" Value="false">
+                                                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
                                 </TreeView.ItemContainerStyle>
                             </TreeView>
                         </Grid>
                     </GroupBox>
-                    <TabControl x:Name="tabControl" Margin="0" TabStripPlacement="Left" Background="#00000000" BorderBrush="{x:Null}" >
-                        <TabItem  Width="75" Margin="0" DataContext="{Binding TextureVM}" Background="#00000000" BorderBrush="{x:Null}" Height="100" Padding="0" >
+                        <Border Panel.ZIndex="-1" VerticalAlignment="Top" CornerRadius="15,0,0,0" Height="38" Margin="80,0,-15,0" Background="#44FFFFFF"/>
+                        <TabControl x:Name="tabControl"  TabStripPlacement="Left" Background="#00000000" BorderBrush="{x:Null}" >
+                        <TabItem  Width="75" x:Name="TexTab" DataContext="{Binding TextureVM}" Background="#00000000" BorderBrush="{x:Null}" Height="100" Padding="0" >
                             <TabItem.Header>
                                 <StackPanel Orientation="Horizontal" Background="#00000000">
                                     <Image Height="75" Width="75" >
@@ -159,9 +250,13 @@
                                     </Image>
                                 </StackPanel>
                             </TabItem.Header>
-                            <views:TextureView/>
+                                <Grid>
+                                    
+                                    <views:TextureView x:Name="VTV"/>
+                                </Grid>
+
                         </TabItem>
-                        <TabItem Width="75" Margin="0" IsEnabled="{Binding ModelTabEnabled, FallbackValue=true}" DataContext="{Binding ModelVM}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF58A6C3" Height="100" Padding="0">
+                        <TabItem Width="75"  IsEnabled="{Binding ModelTabEnabled, FallbackValue=true}" DataContext="{Binding ModelVM}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF58A6C3" Height="100" Padding="0">
                             <TabItem.Header>
                                 <StackPanel Orientation="Horizontal" Background="#00000000">
                                     <Image  Height="75" Width="75" >
@@ -175,14 +270,20 @@
                                                     <Trigger Property="IsMouseOver" Value="True">
                                                         <Setter Property="Source" Value="Resources/Models_Hover.png"/>
                                                     </Trigger>
-                                                </Style.Triggers>
+                                                        <Trigger Property="IsEnabled" Value="False">
+                                                            <Setter Property="Opacity" Value="0.3"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
                                             </Style>
                                         </Image.Style>
                                     </Image>
                                 </StackPanel>
                             </TabItem.Header>
-                         </TabItem>
-                        <TabItem Width="75" Margin="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF58A6C3" Height="100" Padding="0">
+
+                                    <views:ModelView/>
+ 
+                            </TabItem>
+                        <TabItem Width="75"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF58A6C3" Height="100" Padding="0">
                             <TabItem.Header>
                                 <StackPanel Orientation="Horizontal" Background="#00000000">
                                     <Image  Height="75" Width="75" >
@@ -272,7 +373,7 @@
                 </StackPanel>
                 <Grid Margin="0,3.5,60,0" Height="25" VerticalAlignment="Top">
                     <Border  CornerRadius="5" Background="#FF505050" HorizontalAlignment="Right" Width="253" Height="18">
-                        <TextBox  Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" TextWrapping="NoWrap" BorderBrush="{x:Null}" Background="#00000000" Margin="0" Foreground="#FF58A6C3"/>
+                        <TextBox  Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" TextWrapping="NoWrap" BorderBrush="{x:Null}" Background="#00000000"  Foreground="#FF58A6C3"/>
                     </Border>
                     <Image x:Name="Search" Height="20" Width="20" Source="Resources/Search.png" Margin="277.511,-1,3,0" HorizontalAlignment="Right" />
                 </Grid>
